@@ -1,7 +1,20 @@
 {
+  "name": "@avorati/preview",
   "version": "1.0.0",
-  "keywords": [],
+  "description": "A plugin to display the frontend in preview mode.",
+  "keywords": [
+    "strapi",
+    "plugin",
+    "preview",
+    "admin",
+    "cms"
+  ],
   "type": "commonjs",
+  "main": "dist/server/index.js",
+  "types": "server/src/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "exports": {
     "./package.json": "./package.json",
     "./strapi-admin": {
@@ -19,6 +32,14 @@
       "default": "./dist/server/index.js"
     }
   },
+  "scripts": {
+    "build": "npx @strapi/sdk-plugin build",
+    "watch": "npx @strapi/sdk-plugin watch",
+    "watch:link": "npx @strapi/sdk-plugin watch:link",
+    "verify": "npx @strapi/sdk-plugin verify",
+    "test:ts:front": "tsc -p admin/tsconfig.json",
+    "test:ts:back": "tsc -p server/tsconfig.json"
+  },
   "dependencies": {
     "@strapi/design-system": "1.19.0",
     "lucide-react": "^0.525.0",
@@ -28,28 +49,29 @@
     "react-intl": "^7.1.6",
     "react-router-dom": "^7.7.1",
     "styled-components": "^6.1.19",
-    "@strapi/strapi": "5.10.4",
+    "@strapi/strapi": "5.10.4"
+  },
+  "devDependencies": {
     "typescript": "^5.8.3"
   },
-  "files": [
-    "dist"
-  ],
-  "scripts": {
-    "build": "npx @strapi/sdk-plugin build",
-    "watch": "npx @strapi/sdk-plugin watch",
-    "watch:link": "npx @strapi/sdk-plugin watch:link",
-    "verify": "npx @strapi/sdk-plugin verify",
-    "test:ts:front": "run -T tsc -p admin/tsconfig.json",
-    "test:ts:back": "run -T tsc -p server/tsconfig.json"
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=8.0.0"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/avorati/strapi-plugin-preview.git"
+  },
+  "bugs": {
+    "url": "https://github.com/avorati/strapi-plugin-preview/issues"
+  },
+  "homepage": "https://github.com/avorati/strapi-plugin-preview#readme",
+  "license": "MIT",
+  "author": "Douglas Pardim <douglas.skd@gmail.com>",
   "strapi": {
     "kind": "plugin",
     "name": "preview",
-    "displayName": "Visualizar Prévia",
-    "description": "Um plugin Feito para exibir o front no modo preview"
-  },
-  "name": "preview",
-  "description": "Um plugin Feito para exibir o front no modo preview",
-  "license": "MIT",
-  "author": "Douglas Pardim <douglas.skd@gmail.com>"
+    "displayName": "Preview",
+    "description": "A plugin to display the frontend in preview mode."
+  }
 }
