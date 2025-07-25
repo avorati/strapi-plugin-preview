@@ -6,7 +6,7 @@ export default ({ strapi }: { strapi: Core.Strapi }) => ({
       await strapi
         ?.store({
           type: 'plugin',
-          name: 'draft',
+          name: 'preview',
           key: 'settings',
         })
         ?.set({ value: { url } });
@@ -21,7 +21,7 @@ export default ({ strapi }: { strapi: Core.Strapi }) => ({
     const config = await strapi
       ?.store({
         type: 'plugin',
-        name: 'draft',
+        name: 'preview',
         key: 'settings',
       })
       ?.get();

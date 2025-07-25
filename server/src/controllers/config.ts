@@ -6,12 +6,12 @@ export default ({ strapi }: { strapi: Core.Strapi }) => ({
     if (!url) {
       return ctx.throw(400, 'A URL é obrigatória');
     }
-    const response = await strapi?.plugin('draft')?.service('config').setUrl(url);
+    const response = await strapi?.plugin('preview')?.service('config').setUrl(url);
     ctx.send({ success: response?.success || false, url });
   },
 
   async getConfig(ctx: any) {
-    const url = await strapi?.plugin('draft')?.service('config')?.getUrl();
+    const url = await strapi?.plugin('preview')?.service('config')?.getUrl();
     ctx.send(url ? {url} : {});
   },
 });

@@ -1,1 +1,1 @@
-export const PLUGIN_ID = 'draft';
+export const PLUGIN_ID = 'preview';

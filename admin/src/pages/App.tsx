@@ -13,7 +13,7 @@ const App = () => {
 
   // Busca a configuração atual (URL) do plugin
   useEffect(() => {
-    get('/draft/config')
+    get('/preview/config')
       .then((response) => {
         if (response.data && response?.data?.url) {
           setIframeUrl(response?.data?.url);
@@ -25,7 +25,7 @@ const App = () => {
 
   const handleSave = async () => {
     try {
-      await post('/draft/config', { url: inputUrl });
+      await post('/preview/config', { url: inputUrl });
       setIframeUrl(inputUrl);
     } catch (error) {
       console.error('Erro ao salvar a configuração:', error);
@@ -37,7 +37,7 @@ const App = () => {
       {/* Barra fixa superior */}
       <Flex justifyContent="space-between" padding={4} background="neutral100">
         <Typography variant="beta">
-          modo de rascunho (essas mudanças não foram publicadas)
+          Preview
         </Typography>
         <Modal.Root>
           <Modal.Trigger>
@@ -78,7 +78,7 @@ const App = () => {
         {iframeUrl ? (
           <iframe
             src={`${iframeUrl}?status=DRAFT`}
-            title="Visualizar Rascunho"
+            title="Visualizar Preview"
             style={{ width: '100%', height: '100%', border: 0 }}
           />
         ) : (
