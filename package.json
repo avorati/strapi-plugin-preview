@@ -19,12 +19,12 @@
       "default": "./dist/server/index.js"
     }
   },
-  "peerDependencies": {
+  "dependencies": {
+    "@strapi/design-system": "1.19.0",
+    "@strapi/strapi": "5.10.4",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "react-intl": "^7.1.6",
-    "@strapi/strapi": "5.10.4",
-    "@strapi/design-system": "1.19.0"
+    "react-intl": "^7.1.6"
   },
   "files": [
     "dist"
