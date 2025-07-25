@@ -1,6 +1,6 @@
 {
-  "name": "@avorati/preview",
-  "version": "1.0.0",
+  "name": "@avorati/strapi-plugin-preview",
+  "version": "1.0.1",
   "description": "A plugin to display the frontend in preview mode.",
   "keywords": [
     "strapi",
