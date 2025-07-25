@@ -1,0 +1,37 @@
+# Development files
+admin/src/
+server/src/
+admin/tsconfig*.json
+server/tsconfig*.json
+tsconfig*.json
+
+# Temporary build files
+admin/dist/
+server/dist/
+
+# Development files
+.vscode/
+.idea/
+*.log
+.DS_Store
+
+# Test files
+__tests__/
+*.test.*
+*.spec.*
+
+# Development configuration files
+.eslintrc*
+.prettierrc*
+jest.config.*
+
+# Development documentation
+README.pt-BR.md
+
+# CI/CD files
+.github/
+.gitlab-ci.yml
+.travis.yml
+
+# Environment files
+.env* 
