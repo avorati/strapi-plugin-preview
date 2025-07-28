@@ -1,9 +1,10 @@
 import { useState, useEffect, ChangeEvent } from 'react';
 import { Main, Box, Flex, Typography, Button, Modal } from '@strapi/design-system';
-import { useFetchClient } from '@strapi/admin/strapi-admin';
+import { useFetchClient } from '@strapi/strapi/admin';
 import { Field } from '@strapi/design-system';
+import { PLUGIN_ID } from '../../pluginId';
 
-const App = () => {
+export const HomePage = () => {
   const { get, post } = useFetchClient();
   // Estado para a URL que será carregada no iframe
   const [iframeUrl, setIframeUrl] = useState('');
@@ -13,22 +14,29 @@ const App = () => {
 
   // Busca a configuração atual (URL) do plugin
   useEffect(() => {
-    get('/preview/config')
+    get(`${PLUGIN_ID}/settings`)
       .then((response) => {
+        console.log({response})
         if (response.data && response?.data?.url) {
           setIframeUrl(response?.data?.url);
           setInputUrl(response?.data?.url);
         }
       })
-      .catch(console.error);
+      .catch((error: any) => {
+        console.error('Erro ao carregar configuração:', error);
+        console.error('Status:', error.response?.status);
+        console.error('Data:', error.response?.data);
+      });
   }, []);
 
   const handleSave = async () => {
     try {
-      await post('/preview/config', { url: inputUrl });
+      await post(`/${PLUGIN_ID}/settings`, { url: inputUrl });
       setIframeUrl(inputUrl);
-    } catch (error) {
+    } catch (error: any) {
       console.error('Erro ao salvar a configuração:', error);
+      console.error('Status:', error.response?.status);
+      console.error('Data:', error.response?.data);
     }
   };
 
@@ -80,6 +88,7 @@ const App = () => {
             src={`${iframeUrl}?status=DRAFT`}
             title="Visualizar Preview"
             style={{ width: '100%', height: '100%', border: 0 }}
+            allow="autoplay; encrypted-media; fullscreen; accelerometer; gyroscope; clipboard-write; web-share"
           />
         ) : (
           <Typography>Configure a URL para exibir o conteúdo.</Typography>
@@ -88,5 +97,3 @@ const App = () => {
     </Main>
   );
 };
-
-export { App };

@@ -1,27 +1,22 @@
-import type { Core } from '@strapi/strapi';
-import configRoutes from './routes/config';
-import configController from './controllers/config';
-import configService from './services/config';
+/**
+ * Application methods
+ */
+import bootstrap from './bootstrap';
+import destroy from './destroy';
+import register from './register';
 
-export default ({ strapi }: { strapi: Core.Strapi }) => {
-  return {
-    register() {},
-    bootstrap() {},
-    controllers: {
-      config: configController,
-    },
-    services: {
-      config: configService,
-    },
-    routes: {
-      'content-api': {
-        type: 'content-api',
-        routes: configRoutes,
-      },
-      admin: {
-        type: 'admin',
-        routes: configRoutes,
-      },
-    },
-  };
+/**
+ * Plugin server methods
+ */
+import controllers from './controllers';
+import routes from './routes';
+import services from './services';
+
+export default {
+  register,
+  bootstrap,
+  destroy,
+  controllers,
+  routes,
+  services,
 };

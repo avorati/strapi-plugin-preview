@@ -1,19 +1,22 @@
 import { PLUGIN_ID } from './pluginId';
 import { Initializer } from './components/Initializer';
 import { PluginIcon } from './components/PluginIcon';
+import { pluginPermissions } from './permissions';
 
 export default {
   register(app: any) {
+    console.log('Plugin preview sendo registrado...');
+
     app.addMenuLink({
       to: `plugins/${PLUGIN_ID}`,
       icon: PluginIcon,
+      permissions: pluginPermissions.main,
       intlLabel: {
         id: `${PLUGIN_ID}.plugin.name`,
         defaultMessage: PLUGIN_ID,
       },
       Component: async () => {
         const { App } = await import('./pages/App');
-
         return App;
       },
     });
