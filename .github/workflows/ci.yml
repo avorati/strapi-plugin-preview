@@ -61,6 +61,9 @@ jobs:
     - name: Build plugin (handled by prepublishOnly)
       run: echo "Build will be handled by prepublishOnly hook"
 
+    - name: Permitir execução do check-version.sh
+      run: chmod +x ./check-version.sh
+
     - name: Check if version changed
       id: version_check
       run: ./check-version.sh
